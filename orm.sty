@@ -1,0 +1,350 @@
+%%
+%% This is file `orm.sty`,
+%%
+%% This style file changes the appearance of the pages to improve
+%% the aesthetics of PhD theses (in my opinion =)
+%%
+%% Copyright (C) 2007  Jamie Stevens
+%%
+%%
+%%  This program is free software: you can redistribute it and/or modify
+%%  it under the terms of the GNU General Public License as published by
+%%  the Free Software Foundation, either version 3 of the License, or
+%%  (at your option) any later version.
+%%
+%%  This program is distributed in the hope that it will be useful,
+%%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%%  GNU General Public License for more details.
+%%
+%%  You should have received a copy of the GNU General Public License
+%%  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{orm}[2015/10/13 v1.0 Book Style]
+
+%%
+%% Change the \sffont into arial
+%%
+\RequirePackage[T1,T2A]{fontenc}
+\RequirePackage[utf8x]{inputenc}
+\RequirePackage{fancyvrb}
+\usepackage[serbianc]{babel}
+\RequirePackage{DejaVuSans}
+\RequirePackage{DejaVuSerif}
+%\RequirePackage[scaled]{berasans} % U Linuxu
+%\RequirePackage[scaled]{helvet}
+
+\renewcommand\ttdefault{lmtt}
+
+%\renewcommand{\normalsize}{\fontsize{13}{15.6}\selectfont}
+
+%% change the equation number appearance
+%% load up the AMS math package
+\RequirePackage{amsmath}
+
+%% load up the fancy box making package
+\RequirePackage{fancybox}
+
+%% make the equation numbers have little ovals around them
+\def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{%
+\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
+
+%% Load up PS insertion package
+\RequirePackage{color}
+
+%% Load up fancy headers and footers package
+\RequirePackage{fancyhdr}
+
+%% now reset the headers and footers
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{2pt}
+
+%% make the odd pages have the section name on the top right
+\fancyhead[RO]{\small\sffamily\bfseries \nouppercase\rightmark}
+%% make the even pages have the chapter name on the top left
+\fancyhead[LE]{\small\sffamily\bfseries \nouppercase\leftmark}
+
+\RequirePackage{xcolor}
+
+%% put the page numbers on the bottom in a nice box
+%% even side pages
+\definecolor{grayest}{gray}{0.5}
+\fancyfoot[LE]{\colorbox{grayest}{\textcolor{white}{%
+\bfseries\thepage}}}
+%% odd side pages
+\fancyfoot[RO]{\colorbox{grayest}{\textcolor{white}{%
+\bfseries\thepage}}}
+
+%% make the bottom line above the page number box
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footruleskip}{0mm}
+
+%% bring the style into effect
+\pagestyle{fancy}
+
+%% now lightgrayefine the plain style pages (chapter pages, contents pages)
+%% to have the same page number stuff on the bottom
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyfoot[RO]{\colorbox{grayest}{\textcolor{white}{%
+\bfseries\thepage}}}
+\renewcommand{\headrulewidth}{0pt} % ovde sam promenio
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+%\RequirePackage{charter}
+%% this next section (till \makeatother) makes sure that blank pages
+%% are actually completely blank, cause they're not usually
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+	\hbox{}
+	\vspace*{\fill}
+	\thispagestyle{empty}
+	\newpage
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+	\@addtoreset{Examplecount}{chapter}
+\makeatother
+%% now change the chapter style
+%% load up the quotchap package
+\RequirePackage[avantgarde]{quotchap}
+\renewcommand*{\sectfont}{\sc\sffamily\bfseries\selectfont}
+\makeatletter
+\renewcommand*{\chapnumfont}{\usefont{T1}{%
+\@defaultcnfont}{b}{n}\fontsize{100}{130}\selectfont
+ % Default: 100/130
+  \color{grayest}%
+}
+\makeatother
+
+
+
+%% make the quotation appear next to the chapter number
+\renewcommand\chapterheadstartvskip{\vspace*{-2\baselineskip}}
+
+%% now change the section heading to have a line beneath it
+%% load up the fancy title-style package
+\RequirePackage[calcwidth]{titlesec}
+
+
+\titleformat{\section}[hang]{\sffamily\bfseries}
+{\Large\thesection}{12pt}{\Large}[{\titlerule[0.5pt]}]
+
+\titleformat{\part}[frame]{\sffamily\bfseries\scshape}
+{\fontsize{24}{30}\selectfont\thepart}
+{20pt}{\centering\fontsize{24}{30}\selectfont}
+
+
+%%Example environment
+\newcounter{Examplecount}[chapter]
+\setcounter{Examplecount}{0}
+\renewcommand{\theExamplecount}{\arabic{chapter}.%
+\arabic{Examplecount}}
+\newenvironment{primer}
+{% This is the begin code
+\vspace{3mm}
+\parskip=2mm
+\small
+\baselineskip=0.17in
+\refstepcounter{Examplecount} \noindent {\sffamily\bfseries Primer
+\theExamplecount}
+\begin{sf}\begin{it}
+\renewcommand*\familydefault{\sfdefault}
+}
+{% This is the end code
+\end{it}\end{sf}\par\vspace{3mm}}
+%%
+
+%% Define very large font command \HUGE
+\RequirePackage{fix-cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\HUGE}{\fontsize{30}{36}\selectfont}
+%\renewcommand{\normalsize}{\fontsize{14}{17}\selectfont}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{i}{cmyk}{0,0,0,0.08}
+% % % % % Enviroment VAZNO. Pozadina obojena u sivo % % % % %
+\newsavebox{\boris}
+\newenvironment{priv}{%
+\begin{lrbox}{\boris}
+\begin{minipage}{0.982\linewidth}}
+{\end{minipage}\end{lrbox}%
+\colorbox{i}{\usebox{\boris}}}
+
+\newenvironment{vazno}[1]{\begin{center}
+\begin{priv} #1}
+{\end{priv}\end{center}}
+% % % % % Enviroment VAZNO. Pozadina obojena u sivo % % % % %
+
+% Chapter title format
+% \titleformat{\chapter}[display]
+% {\normalfont\sffamily\huge\bfseries}
+% {\chaptertitlename \fillright \thechapter}{40pt}{\sffamily\huge}
+
+
+
+
+\definecolor{s}{cmyk}{0.06,0.02,0,0.01}
+
+\newsavebox{\abstractbox}
+\newenvironment{abstrakt}{%
+\begin{lrbox}{\abstractbox}
+\begin{minipage}{0.85\linewidth}}
+{\end{minipage}\end{lrbox}%
+\colorbox{s}{\usebox{\abstractbox}}}
+
+\newenvironment{sazetak}[1]{\begin{flushright}
+\begin{abstrakt}\small #1}
+{\end{abstrakt}\end{flushright}}
+
+\DeclareTextFontCommand{\emph}{\itshape\bfseries\sffamily}
+
+
+%%%%%%%TEOREME LEME DOKAZI DEFINICIJE%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Theorem
+\newcounter{theo}[chapter] \setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{chapter}.\arabic{theo}}
+\newenvironment{theo}[2][]{%
+\refstepcounter{theo}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Теорема~\thetheo};}}
+}%
+{\mdfsetup{%
+backgroundcolor=orange!3,%
+roundcorner=10pt,%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Теорема~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Lemma
+\newcounter{lem}[chapter] \setcounter{lem}{0}
+\renewcommand{\thelem}{\arabic{chapter}.\arabic{lem}}
+\newenvironment{lem}[2][]{%
+\refstepcounter{lem}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Лема~\thelem};}}
+}%
+{\mdfsetup{%
+backgroundcolor=orange!3,%
+roundcorner=10pt,%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Лема~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=green!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proof
+\newcounter{prf}[chapter]\setcounter{prf}{0}
+\renewcommand{\theprf}{\arabic{chapter}.\arabic{prf}}
+\newenvironment{prf}[2][]{%
+\refstepcounter{prf}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+backgroundcolor=orange!3,%
+roundcorner=10pt,%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Доказ~\theprf};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Доказ~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\renewcommand{\qed}{\phantom{a}\hfill\rule{.7em}{.7em}}
+\begin{mdframed}[]\relax%
+\label{#2}}{\qed\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definicija
+\newcounter{df}[chapter] \setcounter{df}{0}
+\renewcommand{\thedf}{\arabic{df}}
+\newenvironment{df}[2][]{%
+\refstepcounter{df}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=violet!20]
+{\strut Дефиниција~\thedf};}}
+}%
+{\mdfsetup{%
+backgroundcolor=orange!3,%
+roundcorner=10pt,%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=violet!20]
+{\strut Дефиниција~\thedf:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=violet!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Primer
+\newcounter{pr}[chapter] \setcounter{pr}{0}
+\renewcommand{\thepr}{\arabic{pr}}
+\newenvironment{pr}[2][]{%
+\refstepcounter{pr}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=violet!20]
+{\strut Пример~\thepr};}}
+}%
+{\mdfsetup{%
+backgroundcolor=green!30!white,%
+roundcorner=10pt,%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!60]
+{\strut Пример~\thepr:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=green!60,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% End of file `orm.sty`

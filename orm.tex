@@ -1,0 +1,155 @@
+\documentclass[a4paper,twoside]{book}
+
+\usepackage[top=2.5cm,bottom=2.5cm,inner=2.5cm,outer=2cm]{geometry}
+\usepackage{orm,amsmath,amssymb,amsthm,%
+graphicx,makeidx,enumerate,wasysym}
+
+\usepackage{blkarray,listings,chemfig,longtable,booktabs,tabu}
+
+\usepackage[version=3]{mhchem}
+
+\setlength{\parskip}{3mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\lstset{escapeinside={<@}{@>},
+		basicstyle=\ttm,
+		keywordstyle=\ttb}
+
+%
+%% Custom colors
+%\usepackage{color}
+%\definecolor{deepblue}{rgb}{0,0,0.5}
+%\definecolor{deepred}{rgb}{0.6,0,0}
+%\definecolor{deepgreen}{rgb}{0,0.5,0}
+%
+%\usepackage{listings}
+%
+%% Python style for highlighting
+%\newcommand\pythonstyle{\lstset{
+%language=Python,
+%basicstyle=\ttm,
+%otherkeywords={self},             % Add keywords here
+%keywordstyle=\ttb\color{deepblue},
+%emph={MyClass,__init__},          % Custom highlighting
+%emphstyle=\ttb\color{deepred},    % Custom highlighting style
+%stringstyle=\color{deepgreen},
+%frame=tb,                         % Any extra options here
+%showstringspaces=false            % 
+%}}
+%
+%
+%% Python environment
+%\lstnewenvironment{python}[1][]
+%{
+%\pythonstyle
+%\lstset{#1}
+%}
+%{}
+%
+%% Python for external files
+%\newcommand\pythonexternal[2][]{{
+%\pythonstyle
+%\lstinputlisting[#1]{#2}}}
+%
+%% Python for inline
+%\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definicija}[section]
+%\newtheorem{definition*}{Definicija}
+%
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Teorema}[section]
+%\newtheorem{theorem*}{Teorema}
+
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{color}
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\graphicspath{{./slike/}}
+
+%\renewcommand{\rmdefault}{ptm}
+
+\usepackage[margin=1cm,%
+    font=small,%
+    format=hang,%
+    labelsep=period,%
+    labelfont=bf]{caption}
+
+%\let\cleardoublepage\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addto\captionsserbianc{\renewcommand{\chaptername}{}}
+%\addto\captionsserbian{\renewcommand{\thechapter}{}}
+\addto\captionsserbianc{\renewcommand{\bibname}{За више информација}}
+\addto\captionsserbianc{\renewcommand{\appendixname}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[T1]{fontenc}
+
+\makeindex %making an index
+
+\renewcommand{\theequation}{\arabic{chapter}--\arabic{equation}}
+\begin{document}
+\frontmatter
+\pagenumbering{Roman}
+\baselineskip=0.30in
+\allowdisplaybreaks
+
+\begin{center}
+
+\begin{sffamily}
+
+{\large Природно--математички факултет Крагујевац}
+
+\thispagestyle{empty}
+
+
+\vspace*{7cm}
+{\mdseries
+{\HUGE\textbf{Обрада резултата мерења}}}
+
+\vspace*{2cm}
+
+{\Large\textbf{Борис Фуртула}}
+
+\vfill
+
+{\large Крагујевац, 2016.}
+\end{sffamily}
+\end{center}
+\newpage
+
+
+\baselineskip=0.22in
+
+\tableofcontents
+
+\baselineskip=0.28in
+
+\newpage
+\setcounter{chapter}{0}
+\pagenumbering{arabic}
+
+\mainmatter
+
+
+%\part{Основи биостатистике}
+%\thispagestyle{empty}
+
+%\part{Основи биоинформатике}
+%\thispagestyle{empty}
+
+\include{./poglavlja/uvod/def_i_istorija}
+
+\end{document}
