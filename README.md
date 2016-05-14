@@ -1,2 +1,2 @@
 # orm
-knjiga o hemometriji
+Knjiga o hemometriji.
