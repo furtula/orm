@@ -141,19 +141,19 @@
 \setcounter{Examplecount}{0}
 \renewcommand{\theExamplecount}{\arabic{chapter}.%
 \arabic{Examplecount}}
-\newenvironment{primer}
-{% This is the begin code
-\vspace{3mm}
-\parskip=2mm
-\small
-\baselineskip=0.17in
-\refstepcounter{Examplecount} \noindent {\sffamily\bfseries Primer
-\theExamplecount}
-\begin{sf}\begin{it}
-\renewcommand*\familydefault{\sfdefault}
-}
-{% This is the end code
-\end{it}\end{sf}\par\vspace{3mm}}
+%\newenvironment{primer}
+%{% This is the begin code
+%\vspace{3mm}
+%\parskip=2mm
+%\small
+%\baselineskip=0.17in
+%\refstepcounter{Examplecount} \noindent {\sffamily\bfseries Primer
+%\theExamplecount}
+%\begin{sf}\begin{it}
+%\renewcommand*\familydefault{\sfdefault}
+%}
+%{% This is the end code
+%\end{it}\end{sf}\par\vspace{3mm}}
 %%
 
 %% Define very large font command \HUGE
@@ -195,7 +195,7 @@
 \colorbox{s}{\usebox{\abstractbox}}}
 
 \newenvironment{sazetak}[1]{\begin{flushright}
-\begin{abstrakt}\small #1}
+\begin{abstrakt}\sffamily #1}
 {\end{abstrakt}\end{flushright}}
 
 \DeclareTextFontCommand{\emph}{\itshape\bfseries\sffamily}
