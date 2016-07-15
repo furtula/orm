@@ -26,16 +26,47 @@
 %%
 %% Change the \sffont into arial
 %%
-\RequirePackage[T1,T2A]{fontenc}
-\RequirePackage[utf8x]{inputenc}
+%\RequirePackage[T1,T2A]{fontenc}
+%\RequirePackage[utf8x]{inputenc}
 \RequirePackage{fancyvrb}
-\usepackage[serbianc]{babel}
-\RequirePackage{DejaVuSans}
-\RequirePackage{DejaVuSerif}
+%\usepackage[serbianc]{babel}
+%\RequirePackage{DejaVuSans}
+%\RequirePackage{DejaVuSerif}
 %\RequirePackage[scaled]{berasans} % U Linuxu
 %\RequirePackage[scaled]{helvet}
 
-\renewcommand\ttdefault{lmtt}
+%\renewcommand\ttdefault{lmtt}
+
+
+\RequirePackage{ifluatex}
+\ifluatex
+\usepackage{fontspec}
+\setmainfont[Renderer=Basic,% 
+             Ligatures=TeX]{PTSerif}
+\setsansfont[Renderer=Basic,% 
+             Ligatures=TeX,%
+             UprightFont={* Light},%
+             ItalicFont={* Light Italic},%
+             BoldFont={* Bold},%
+             BoldItalicFont={* Bold Italic}]{OpenSans}
+\setmonofont[Renderer=Basic, Ligatures=TeX]{InputMono}
+
+\usepackage{polyglossia}
+\setmainlanguage[script=Cyrillic]{serbian}
+\setotherlanguage{english}
+\else
+\usepackage[serbian,english]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\addto\captionsserbian{\renewcommand{\chaptername}{}}
+%\addto\captionsserbian{\renewcommand{\thechapter}{}}
+\addto\captionsserbian{\renewcommand{\bibname}{За више информација}}
+\addto\captionsserbian{\renewcommand{\appendixname}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %\renewcommand{\normalsize}{\fontsize{13}{15.6}\selectfont}
 
