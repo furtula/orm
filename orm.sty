@@ -42,15 +42,15 @@
 \ifluatex
 \usepackage{fontspec}
 \setmainfont[Renderer=Basic,% 
-             Ligatures=TeX]{PTSerif}
+             Ligatures=TeX]{DejaVuSerif}
 \setsansfont[Renderer=Basic,% 
              Ligatures=TeX,%
 %             UprightFont={* Light},%
 %             ItalicFont={* Light Italic},%
 %             BoldFont={* Bold},%
 %             BoldItalicFont={* Bold Italic} %
-             ]{OpenSans}
-\setmonofont[Renderer=Basic, Ligatures=TeX]{InputMono}
+             ]{DejaVuSans}
+\setmonofont[Renderer=Basic, Ligatures=TeX]{DejaVuSansMono}
 
 \usepackage{polyglossia}
 \setmainlanguage[script=Cyrillic]{serbian}
@@ -62,14 +62,14 @@
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\addto\captionsserbian{\renewcommand{\chaptername}{}}
+\addto\captionsserbian{\renewcommand{\chaptername}{Поглавље}}
 %\addto\captionsserbian{\renewcommand{\thechapter}{}}
 \addto\captionsserbian{\renewcommand{\bibname}{За више информација}}
 \addto\captionsserbian{\renewcommand{\appendixname}{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%\renewcommand{\normalsize}{\fontsize{13}{15.6}\selectfont}
+\renewcommand{\normalsize}{\fontsize{13}{15.6}\selectfont}
 
 %% change the equation number appearance
 %% load up the AMS math package
